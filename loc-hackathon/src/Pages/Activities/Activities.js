@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Activities.css";
 import sport from "../../assets/sports.png";
 import meditation from "../../assets/meditation.png";
@@ -10,7 +10,9 @@ import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import { Button } from "@material-ui/core";
 
+
 export default function Activities() {
+	const [data,setData] = useState()
 	const Item = styled(Paper)(({ theme }) => ({
 		backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
 		...theme.typography.body2,
@@ -18,79 +20,43 @@ export default function Activities() {
 		textAlign: "center",
 		color: theme.palette.text.secondary,
 	}));
+	useEffect(()=>{
+		fetch("http://9eae-106-209-235-77.ngrok.io/Activity/",{
+			headers:{
+				Authorization:"Token 226eb2ed7afd3117ff943994158d9645eac05dbe"
+			}
+		})
+
+      .then((res) => res.json())
+      .then((json) => setData(json));
+	},[])
 
 	return (
 		<>
 			<Grid container spacing={3}>
+				{data?data.map((item)=>{return(
 				<Grid item xs={3}>
 					<Item>
 						<div className="theContainer">
 							<div className="theCard">
 								<div className="theFront">
-									Meditation
-									<img className="front_img" src={meditation} />
+									{item.name}
+									<img className="front_img" src={item.image} />
 								</div>
 								<div className="theBack">
-									Many studies have been conducted to look at how meditation may
-									be helpful for a variety of conditions, such as high blood
-									pressure, certain psychological disorders, and pain. A number
-									of studies also have helped researchers learn how meditation
-									might work and how it affects the brain.
+									{item.description}
+									<Button 
+						sx={{cursor:"pointer"}}>
+						Start Activity
+					</Button>
 								</div>
 							</div>
 						</div>
 					</Item>
+					
 				</Grid>
-				<Grid item xs={3}>
-					<Item>
-						<div className="theContainer">
-							<div className="theCard">
-								<div className="theFront">
-									Pilates
-									<img className="front_img" src={pilates} />
-								</div>
-								<div className="theBack">
-									<div>
-										Many studies have been conducted to look at how meditation
-										may be helpful for a variety of conditions, such as high
-										blood pressure, certain psychological disorders, and pain. A
-										number of studies also have helped researchers learn how
-										meditation might work and how it affects the brain.
-									</div>
-									<Button sx={{cursor:"pointer"}}>
-										Start Activity
-									</Button>
-								</div>
-							</div>
-						</div>
-					</Item>
-				</Grid>
-				<Grid item xs={3}>
-					<Item>
-						<div className="theContainer">
-							<div className="theCard">
-								<div className="theFront">
-									Spinning
-									<img className="front_img" src={sport} />
-								</div>
-								<div className="theBack">Back of Card</div>
-							</div>
-						</div>
-					</Item>
-				</Grid>
-				<Grid item xs={3}>
-					<Item>
-						<div className="theContainer">
-							<div className="theCard">
-								<div className="theFront">
-									Indoor Bike
-									<img className="front_img" src={indoor_bike} />
-								</div>
-								<div className="theBack">Back of Card</div>
-							</div>
-						</div>
-					</Item>
-				</Grid>
+				)}):<p></p>}
+				
 			</Grid>
 
 			{/* <div className="main_container">
