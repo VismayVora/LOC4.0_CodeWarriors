@@ -1,0 +1,51 @@
+.theContainer{
+    position: relative;
+    width: 100%;
+    height: 300px;
+  }
+
+  .front_img{
+    position: relative;
+    width: 100%;
+    height: 280px;
+  }
+
+  .theBack{
+      text-align: left;
+      padding: 1px;
+  }
+
+  .startActivityButton{
+      margin-top: 120px;
+  }
+  
+  .theCard{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+  }
+  
+  .theCard:hover{
+    transform: rotateY(180deg);
+  }
+  
+  .theFront{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-color: beige;
+    color: black;
+  }
+  
+  .theBack{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-color: aquamarine;
+    color: black;
+    transform: rotateY(180deg);
+  }
