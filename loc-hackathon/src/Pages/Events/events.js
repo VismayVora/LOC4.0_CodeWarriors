@@ -69,6 +69,7 @@ export default function OutlinedCard() {
 			<Stack direction="row" alignItems="center" spacing={2}>
 				<label htmlFor="icon-button-file">
 					<IconButton
+          className="add_button"
 						color="info"
 						// aria-label="upload picture"
 						// component="span"
@@ -87,20 +88,28 @@ export default function OutlinedCard() {
 								<Item>
 									<div className="the-Container">
 										<div className="the-Card">
-											{item.name}
+											<h2>{item.name}</h2>
 											<div className="the-Front">
-												<img className="front_img" src={data.image} />
+												<img className="front_img" src={item.image} />
 											</div>
 										</div>
 										<div className="front_right">
 											<h3>Date: {item.date}</h3>
 											<h3>Time: {item.time}</h3>
 											<h3>Location: {item.location}</h3>
-                      <h3>Participant Limit: {item.participant_limit}</h3>
-                      <h3>Organizer: {item.organiser}</h3>
-                      <Button style={{marginLeft:"40%", marginTop:"15%", color:"blue", borderColor:"blue"}}>Join Event</Button>
+											<h3>Participant Limit: {item.participant_limit}</h3>
+											<h3>Organizer: {item.organiser}</h3>
+											<Button
+												style={{
+													marginLeft: "40%",
+													marginTop: "15%",
+													color: "blue",
+													borderColor: "blue",
+												}}
+											>
+												Join Event
+											</Button>
 										</div>
-                   
 									</div>
 								</Item>
 							</Grid>

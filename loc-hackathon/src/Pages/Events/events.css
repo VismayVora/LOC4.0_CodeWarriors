@@ -15,11 +15,14 @@ h3 {
 	margin-left: 15% !important;
     /* margin-top: 5px !important;  */
 }
+.add_button{
+    margin-left: 2rem;
+}
 
 .front_img {
 	position: relative;
 	/* width: 50% !important; */
-	height: 180px;
+	height: 230px !important;
 	justify-content: flex-start !important;
 }
 

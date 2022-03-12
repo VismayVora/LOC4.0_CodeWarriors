@@ -51,8 +51,8 @@ export default function Activities() {
 												{item.description}
 												<Button
 													sx={{ cursor: "pointer" }}
-													onClick={() =>{ sessionStorage.setItem('item_id', JSON.stringify(item.id));
-														navigate("/selected_activity")}}
+													onClick={() =>{ navigate("/selected_activity"); sessionStorage.setItem('item_id', JSON.stringify(item.id));
+														}}
 												>
 													Start Activity
 												</Button>
