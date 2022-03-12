@@ -1,20 +1,33 @@
 .the-Container {
 	position: relative;
 	width: 100%;
-	height: 400px;
-	align-items: flex-start;
+	height: 300px;
+
+	/* margin-left: 5% !important; */
+}
+.front_right {
+    margin-top: 5px !important;
+	margin-left: 40% !important;
+	justify-content: left !important;
+	text-align: start;
+}
+h3 {
+	margin-left: 15% !important;
+    /* margin-top: 5px !important;  */
 }
 
 .front_img {
 	position: relative;
-	width: 50%;
-	height: 280px;
+	/* width: 50% !important; */
+	height: 180px;
+	justify-content: flex-start !important;
 }
 
 .the-Card {
 	position: absolute;
-	width: 50%;
+	width: 45%;
 	height: 100%;
+	justify-content: flex-start !important;
 }
 
 .the-Front {
@@ -22,6 +35,6 @@
 	width: 100%;
 	height: 100%;
 	backface-visibility: hidden;
-	background-color: beige;
+	/* background-color: beige; */
 	color: black;
 }

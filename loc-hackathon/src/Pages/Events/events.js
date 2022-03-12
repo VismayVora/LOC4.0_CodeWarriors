@@ -1,5 +1,4 @@
-
-import React,{ useEffect } from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -16,6 +15,7 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import yoga from "../../assets/meditation.png";
+import "./events.css";
 
 const useStyles = makeStyles({
 	root: {
@@ -44,25 +44,25 @@ const Item = styled(Paper)(({ theme }) => ({
 	color: theme.palette.text.secondary,
 }));
 
-
-
-
 export default function OutlinedCard() {
-    const [data,setData]=useState()
+	const [data, setData] = useState();
 	const classes = useStyles();
 	const navigate = useNavigate();
 	const bull = <span className={classes.bullet}>•</span>;
 	const arr = [1];
 
-    useEffect(() => {
-        fetch("http://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/Event/", {
-            headers: {
-                Authorization: "Token 226eb2ed7afd3117ff943994158d9645eac05dbe",
-            },
-        })
-            .then((res) => res.json())
-            .then((json) => setData(json));
-    }, []);
+	useEffect(() => {
+		fetch(
+			"http://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/Event/",
+			{
+				headers: {
+					Authorization: "Token 226eb2ed7afd3117ff943994158d9645eac05dbe",
+				},
+			}
+		)
+			.then((res) => res.json())
+			.then((json) => setData(json));
+	}, []);
 
 	return (
 		<>
@@ -79,25 +79,37 @@ export default function OutlinedCard() {
 					</IconButton>
 				</label>
 			</Stack>
-            <Grid container spacing={3}>
-                {data?data.map((item)=>{return(
-      <Grid item xs={3}>
+			<Grid container spacing={3}>
+				{data ? (
+					data.map((item) => {
+						return (
+							<Grid item xs={6}>
 								<Item>
 									<div className="the-Container">
 										<div className="the-Card">
-											<div className="the-Front">
 											{item.name}
+											<div className="the-Front">
 												<img className="front_img" src={data.image} />
 											</div>
-											
 										</div>
+										<div className="front_right">
+											<h3>Date: {item.date}</h3>
+											<h3>Time: {item.time}</h3>
+											<h3>Location: {item.location}</h3>
+                      <h3>Participant Limit: {item.participant_limit}</h3>
+                      <h3>Organizer: {item.organiser}</h3>
+                      <Button style={{marginLeft:"40%", marginTop:"15%", color:"blue", borderColor:"blue"}}>Join Event</Button>
+										</div>
+                   
 									</div>
 								</Item>
 							</Grid>
-                            
-                            )}):<p>Loadnih</p>}
-                            </Grid>
-                            
+						);
+					})
+				) : (
+					<p>Loadnih</p>
+				)}
+			</Grid>
 		</>
 	);
 }

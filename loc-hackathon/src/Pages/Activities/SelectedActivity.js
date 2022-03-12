@@ -37,7 +37,8 @@ export default function SelectedActivity() {
 			},
 		})
 			.then((res) => res.json())
-			.then((json) => setData(json));
+			.then((json) => console.log(data));
+
 	}, []);
 	return (
 		<div>
@@ -56,9 +57,9 @@ export default function SelectedActivity() {
 				</Grid>
 				<Grid item xs={6} md={12}>
 					<Item>
-					<h1>Exercise Name</h1>
-						<Checkbox {...label} defaultChecked />
-						{data.name}
+					<h1> <Checkbox {...label} defaultChecked /> {data.name}</h1>
+						
+						
 					</Item>
 				</Grid>
 			</Grid>
