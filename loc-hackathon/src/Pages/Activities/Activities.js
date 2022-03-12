@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Activities.css";
+import { useNavigate } from "react-router-dom";
 import sport from "../../assets/sports.png";
 import meditation from "../../assets/meditation.png";
 import pilates from "../../assets/pilates.png";
@@ -8,7 +9,7 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
-import { Button } from "@material-ui/core";
+import Button from "@mui/material/Button";
 
 export default function Activities() {
 	const Item = styled(Paper)(({ theme }) => ({
@@ -18,6 +19,8 @@ export default function Activities() {
 		textAlign: "center",
 		color: theme.palette.text.secondary,
 	}));
+
+	const navigate = useNavigate();
 
 	return (
 		<>
@@ -57,9 +60,14 @@ export default function Activities() {
 										number of studies also have helped researchers learn how
 										meditation might work and how it affects the brain.
 									</div>
-									<button >
+									<Button
+										variant="outlined"
+										className="startActivityButton"
+										sx={{ marginTop: "120px" }}
+                                        onClick={() => navigate("/selected_activity")}
+									>
 										Start Activity
-									</button>
+									</Button>
 								</div>
 							</div>
 						</div>

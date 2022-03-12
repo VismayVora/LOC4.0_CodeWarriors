@@ -11,12 +11,17 @@
   }
 
   .theBack{
-      text-align: left;
-      padding: 1px;
+      text-align: center;
+      margin: 2px !important;
   }
 
   .startActivityButton{
+      justify-content: flex;
+      text-align: center;
+      padding: 1px;
       margin-top: 120px;
+      /* margin-left: 25% !important; */
+      cursor: pointer;
   }
   
   .theCard{
