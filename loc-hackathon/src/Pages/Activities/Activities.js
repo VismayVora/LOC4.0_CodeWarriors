@@ -22,11 +22,14 @@ export default function Activities() {
 		color: theme.palette.text.secondary,
 	}));
 	useEffect(() => {
-		fetch("http://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/Activity", {
-			headers: {
-				Authorization: "Token 226eb2ed7afd3117ff943994158d9645eac05dbe",
-			},
-		})
+		fetch(
+			"http://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/Activity",
+			{
+				headers: {
+					Authorization: "Token 226eb2ed7afd3117ff943994158d9645eac05dbe",
+				},
+			}
+		)
 			.then((res) => res.json())
 			.then((json) => setData(json));
 	}, []);
@@ -51,8 +54,13 @@ export default function Activities() {
 												{item.description}
 												<Button
 													sx={{ cursor: "pointer" }}
-													onClick={() =>{ navigate("/selected_activity"); sessionStorage.setItem('item_id', JSON.stringify(item.id));
-														}}
+													onClick={() => {
+														navigate("/selected_activity");
+														sessionStorage.setItem(
+															"item_id",
+															JSON.stringify(item.id)
+														);
+													}}
 												>
 													Start Activity
 												</Button>
@@ -67,21 +75,6 @@ export default function Activities() {
 					<p></p>
 				)}
 			</Grid>
-
-			{/* <div className="main_container">
-				<div className="theContainer">
-					<div className="theCard">
-						<div className="theFront">Front of Card</div>
-						<div className="theBack">Back of Card</div>
-					</div>
-				</div>
-				<div className="theContainer">
-					<div className="theCard">
-						<div className="theFront">Front of Card</div>
-						<div className="theBack">Back of Card</div>
-					</div>
-				</div>
-			</div> */}
 		</>
 	);
 }

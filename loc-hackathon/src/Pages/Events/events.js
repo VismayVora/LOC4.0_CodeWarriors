@@ -15,7 +15,11 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import yoga from "../../assets/meditation.png";
+// import Popup from "reactjs-popup";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 import "./events.css";
+import { TextField } from "@mui/material";
 
 const useStyles = makeStyles({
 	root: {
@@ -69,7 +73,7 @@ export default function OutlinedCard() {
 			<Stack direction="row" alignItems="center" spacing={2}>
 				<label htmlFor="icon-button-file">
 					<IconButton
-          className="add_button"
+						className="add_button"
 						color="info"
 						// aria-label="upload picture"
 						// component="span"
@@ -99,10 +103,15 @@ export default function OutlinedCard() {
 											<h3>Location: {item.location}</h3>
 											<h3>Availability: {item.participant_limit}</h3>
 											<h3>Organizer: {item.organiser}</h3>
+											<TextField
+												label="Number of members"
+												sx={{ width: "180px", marginLeft: "40px" }}
+											></TextField>
+
 											<Button
 												style={{
 													marginLeft: "40%",
-													marginTop: "15%",
+													marginTop: "1%",
 													color: "blue",
 													borderColor: "blue",
 												}}
