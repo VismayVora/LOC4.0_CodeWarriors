@@ -13,6 +13,7 @@ import AddCircle from "@mui/icons-material/AddCircle";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import yoga from "../../assets/meditation.png"
 
 const useStyles = makeStyles({
 	root: {
@@ -33,6 +34,13 @@ const useStyles = makeStyles({
 const Input = styled("input")({
 	display: "none",
 });
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
 
 
 export default function OutlinedCard() {
@@ -56,21 +64,19 @@ export default function OutlinedCard() {
 				</label>
 			</Stack>
 
-			<Grid container spacing={3}>
-				<Grid item xs={3}>
-					<div>
-						{arr.map((item) => {
-							return (
-								<div className="Container">
-									<div className="Card">
-										<div className="Front">Meditation</div>
+      <Grid item xs={3}>
+								<Item>
+									<div className="the-Container">
+										<div className="the-Card">
+											<div className="the-Front">
+											name
+												<img className="front_img" src={yoga} />
+											</div>
+											
+										</div>
 									</div>
-								</div>
-							);
-						})}
-					</div>
-				</Grid>
-			</Grid>
+								</Item>
+							</Grid>
 		</>
 	);
 }
