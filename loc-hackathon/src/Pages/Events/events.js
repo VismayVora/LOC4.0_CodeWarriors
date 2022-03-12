@@ -1,4 +1,6 @@
-import React from "react";
+
+import React,{ useEffect } from "react";
+import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -43,11 +45,24 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 
+
+
 export default function OutlinedCard() {
+    const [data,setData]=useState()
 	const classes = useStyles();
   const navigate = useNavigate();
 	const bull = <span className={classes.bullet}>•</span>;
 	const arr = [1];
+
+    useEffect(() => {
+        fetch("http://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/Event/", {
+            headers: {
+                Authorization: "Token 226eb2ed7afd3117ff943994158d9645eac05dbe",
+            },
+        })
+            .then((res) => res.json())
+            .then((json) => setData(json));
+    }, []);
 
 	return (
 		<>
@@ -63,20 +78,25 @@ export default function OutlinedCard() {
 					</IconButton>
 				</label>
 			</Stack>
-
+            <Grid container spacing={3}>
+                {data?data.map((item)=>{return(
       <Grid item xs={3}>
 								<Item>
 									<div className="the-Container">
 										<div className="the-Card">
 											<div className="the-Front">
-											name
-												<img className="front_img" src={yoga} />
+											{item.name}
+												<img className="front_img" src={data.image} />
 											</div>
 											
 										</div>
 									</div>
 								</Item>
 							</Grid>
+                            
+                            )}):<p>Loadnih</p>}
+                            </Grid>
+                            
 		</>
 	);
 }

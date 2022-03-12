@@ -22,7 +22,7 @@ export default function Activities() {
 		color: theme.palette.text.secondary,
 	}));
 	useEffect(() => {
-		fetch("http://9eae-106-209-235-77.ngrok.io/Activity/", {
+		fetch("http://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/Activity", {
 			headers: {
 				Authorization: "Token 226eb2ed7afd3117ff943994158d9645eac05dbe",
 			},
