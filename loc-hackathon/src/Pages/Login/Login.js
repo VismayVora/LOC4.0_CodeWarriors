@@ -37,7 +37,7 @@ export default function LoginSide() {
 			.then((result) => {
 				if (result.token) {
 					console.log(result.token);
-					navigate("/booking");
+					navigate("/activities");
 				} else {
 					navigate("/signup");
 					alert("Invalid cred");

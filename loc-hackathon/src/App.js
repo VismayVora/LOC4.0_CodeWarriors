@@ -9,13 +9,11 @@ import Dashboard from './Pages/dashboard/dashboard';
 import Charts from './Pages/dashboard/chart';
 import SpacingGrid from './Pages/dashboard/layout';
 import OutlinedCard from "./Pages/Events/events";
-import Activities from "../src/Pages/Activities/Activities"
-<<<<<<< HEAD
+import Activities from "../src/Pages/Activities/Activities";
+import NewEvent from "../src/Pages/Events/NewEvent"
 import "./App.css";
 import SelectedActivity from "./Pages/Activities/SelectedActivity";
-=======
 
->>>>>>> 797e8cdecd1a62f0820d71091f40cef363856b8b
 
 function App() {
 	const theme = createTheme({
@@ -39,6 +37,7 @@ function App() {
 						<Route exact path="/activities" element={<Activities />} />
 						<Route path="selected_activity" element={<SelectedActivity/>} />
 						<Route path="/" element={<Landing />} />
+						<Route path="/newevent" element={<NewEvent />} />
 						<Route path='/simplecard' element={<OutlinedCard />} />
 					</Routes>
 				</div>
