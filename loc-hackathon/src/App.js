@@ -1,6 +1,6 @@
-import logo from './logo.svg';
+import logo from "./logo.svg";
 import { Route, Routes } from "react-router";
-import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Outlet, Navigate } from "react-router-dom";
 import LoginSide from "../src/Pages/Login/Login";
 import SignInSide from "../src/Pages/Signup/Signup";
@@ -10,17 +10,19 @@ import Dashboard from './Pages/dashboard/dashboard';
 import Charts from './Pages/dashboard/chart';
 import SpacingGrid from './Pages/dashboard/layout';
 
+import Activities from "../src/Pages/Activities/Activities"
+
 
 function App() {
-  const theme = createTheme({
+	const theme = createTheme({
 		palette: {
 			secondary: {
-				main: '#E33E7F'
-			}
-		}
+				main: "#E33E7F",
+			},
+		},
 	});
-  return (
-    <MuiThemeProvider theme={theme}>
+	return (
+		<MuiThemeProvider theme={theme}>
 			<Router>
 				<div className="App">
 					<Routes>
@@ -30,11 +32,12 @@ function App() {
 						<Route path='/dashboard' element={<Dashboard />} />
 						<Route path='/charts' element={<Charts />} />
 						<Route path='/spacinggrid' element={<SpacingGrid />} />
+						<Route exact path="/activities" element={<Activities />} />
 					</Routes>
 				</div>
 			</Router>
 		</MuiThemeProvider>
-  );
+	);
 }
 
 export default App;
