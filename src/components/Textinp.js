@@ -6,10 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 const Textinp = (props) => {
     return (
         <View style={{...styles.inputContainer,marginTop:props.marginTop}}>
-            {props.iconShape=='sports-cricket'?<MaterialIcons name={props.iconShape} size={20} color="#393E46"  style={{paddingLeft:10}}/>
-            :
             <Ionicons name={props.iconShape} size={20} color="#393E46"  style={{paddingLeft:10}}/>
-            }
             <TextInput style={styles.textInput}
                 placeholder={props.placeholder}
                 autoComplete={props.autoComplete}

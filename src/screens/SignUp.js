@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
-
-// import {AuthContainer, useAuth} from '../../Auth';
+import SelectDropdown from 'react-native-select-dropdown';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import { AuthContainer,useAuth } from '../Auth.js';
 import Textinp from '../components/Textinp.js';
 import PasswordInput from '../components/PassInput.js';
 
@@ -10,14 +12,16 @@ function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [sport, setSport] = useState('');
+  const [name, setName] = useState('');
+  const countries = ["Cricket","Football"]
 
-//   const auth = useAuth();
-//   const onRegister = (name, contact, email, password) =>
-//     auth.register(name, contact, email, password);
+  const auth = useAuth();
+  const onRegister = (name, email, password,sport) =>
+    auth.register(name, email, password,sport);
 
   return (
     <View style={styles.container}>
-      {/* <Textinp
+      <Textinp
         marginTop={10}
         iconShape="person"
         placeholder="Name"
@@ -27,17 +31,29 @@ function SignUp() {
           setName(text);
         }}
         placeholderTextColor="black"
-      /> */}
-      <Textinp
-        marginTop={25}
-        iconShape="sports-cricket"
-        placeholder="Sport"
-        // autoComplete="Sport"
-        value={sport}
-        onChangeText={text => {
-          setSport(text);
+      />
+      <View style={styles.Dropdown}>
+      <MaterialIcons name='sports-cricket' size={20} color="#393E46"  style={{paddingLeft:10}}/>
+      <Text style={{marginLeft:10,fontSize:16,fontWeight:'bold',color:'black'}}>Sport </Text>
+        <SelectDropdown dropdownBackgroundColor="white"
+          defaultButtonText='Select a Sport'
+        data={countries}
+        onSelect={(selectedItem, index) => {
+          console.log(selectedItem, index);
+          setSport(selectedItem);
         }}
-        placeholderTextColor="black"/>
+        buttonTextAfterSelection={(selectedItem, index) => {
+          // text represented after item is selected
+          // if data array is an array of objects then return selectedItem.property to render after item is selected
+          return selectedItem
+        }}
+        rowTextForSelection={(item, index) => {
+          // text represented for each item in dropdown
+          // if data array is an array of objects then return item.property to represent item in dropdown
+          return item
+        }}
+      />
+      </View>
       <Textinp
         marginTop={25}
         iconShape="mail"
@@ -59,7 +75,7 @@ function SignUp() {
       />
       <TouchableOpacity
         onPress={() => {
-        //   onRegister(name, email, password, contact);
+          onRegister(name, email, password, sport);
         }}>
         <Text style={styles.textStyle}>Signup</Text>
       </TouchableOpacity>
@@ -78,6 +94,16 @@ const styles = StyleSheet.create({
     marginTop: 25,
     fontSize:20,
   },
+  Dropdown: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    width: wp('85%'),
+    borderRadius: 10,
+    height: 60,
+    marginTop:25,
+},
 
 });
 
