@@ -97,7 +97,7 @@ export default function OutlinedCard() {
 											<h3>Date: {item.date}</h3>
 											<h3>Time: {item.time}</h3>
 											<h3>Location: {item.location}</h3>
-											<h3>Participant Limit: {item.participant_limit}</h3>
+											<h3>Availability: {item.participant_limit}</h3>
 											<h3>Organizer: {item.organiser}</h3>
 											<Button
 												style={{

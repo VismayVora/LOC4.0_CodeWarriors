@@ -15,17 +15,19 @@ function NewEvent() {
 	const [organizer,setOrganizer]=useState()
 	const [number,setNumber]=useState()
 	const [location,setLocation]=useState()
+	const [err,setErr]=useState()
 	
 
 	const handleClick=()=>{
 		const formData=new FormData()
+		const token = localStorage.getItem('token');
       formData.append('date',date)
       formData.append('time',time)
 	  formData.append('name',name)
-	  formData.append('organiser',)
 	  formData.append('participant_limit',number)
 	  formData.append('location',location)
-      fetch("http://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/Event/",{
+	  formData.append('token',token)
+      fetch("http://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/create_event/",{
 		headers: {
 			Authorization: "Token 226eb2ed7afd3117ff943994158d9645eac05dbe",
 		},

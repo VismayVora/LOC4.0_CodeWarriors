@@ -28,16 +28,16 @@ const Input = styled("input")({
 
 export default function SelectedActivity() {
 	const [data,setData]=useState()
-	const itemid = sessionStorage.getItem('item_id');
-	console.log(itemid)
 	useEffect(() => {
-		fetch("http://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/Activity/"+itemid, {
+		const itemid = sessionStorage.getItem('item_id');
+		console.log(itemid)
+		fetch("http://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/Activity/"+itemid+"/", {
 			headers: {
 				Authorization: "Token 226eb2ed7afd3117ff943994158d9645eac05dbe",
 			},
 		})
 			.then((res) => res.json())
-			.then((json) => console.log(data));
+			.then((json) => setData(json));
 
 	}, []);
 	return (
