@@ -34,18 +34,12 @@ function App() {
 						<Route path="/signup" element={<SignInSide />} />
 						<Route path="/" element={<Landing />} />
 						<Route path="/dashboard" element={<Dashboard />} />
-						<Route path="/charts" element={<Charts />} />
-						<Route path="/spacinggrid" element={<SpacingGrid />} />
 						<Route exact path="/activities" element={<Activities />} />
 						<Route path="selected_activity" element={<SelectedActivity />} />
-						<Route path="/" element={<Landing />} />
 						<Route path="/newevent" element={<NewEvent />} />
 						<Route path="/event" element={<OutlinedCard />} />
 						<Route path="/selectedevent" element={<SelectedEvent />} />
-						<Route
-							path="/timer"
-							element={<Timer  />}
-						/>
+						<Route path="/timer" element={<Timer />} />
 					</Routes>
 				</div>
 			</Router>

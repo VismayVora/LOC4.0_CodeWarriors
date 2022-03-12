@@ -8,28 +8,32 @@ import Box from "@mui/material/Box";
 import "./NewEvent.css";
 
 function NewEvent() {
-	const navigate = useNavigate();
-	const [list, setList] = useState({
-		lighting: "",
-		openness: "",
-		visibility: "",
-		people: "",
-		security: "",
-		walkpath: "",
-		public_transportation: "",
-		public_usage: "",
-		feeling: "",
-	});
-	const [items, setItems] = useState([]);
-	const [show, setShow] = useState(false);
-	const handleChange = (e) => {
-		const name = e.target.name;
-		const value = e.target.value;
-		setValue(e.target.value);
-		setList({ ...list, [name]: value });
-	};
+	const navigate = useNavigate()
+	const [name,setName]=useState()
+	const [date,setDate]=useState()
+	const [time,setTime]=useState()
+	const [organizer,setOrganizer]=useState()
+	const [number,setNumber]=useState()
+	const [location,setLocation]=useState()
+	
 
-	const [value, setValue] = useState([null, null]);
+	const handleClick=()=>{
+		const formData=new FormData()
+      formData.append('date',date)
+      formData.append('time',time)
+	  formData.append('name',name)
+	  formData.append('organiser',)
+	  formData.append('participant_limit',number)
+	  formData.append('location',location)
+      fetch("http://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/Event/",{
+		headers: {
+			Authorization: "Token 226eb2ed7afd3117ff943994158d9645eac05dbe",
+		},
+            method:'POST',
+            body:formData,
+        }).then(res=>res.json().then(json=>console.log(json)))
+        .catch(err=>console.log(err))
+	}
 
 	return (
 		<>
@@ -85,16 +89,20 @@ function NewEvent() {
 							>
 								<Grid item style={{ width: "100%" }}>
 									<TextField
+										value={name}
 										id="standard-textarea"
 										label="Event Name"
 										variant="standard"
+										onChange={(e)=>setName(e.target.value)}
 									/>
 								</Grid>
 								<Grid item style={{ width: "100%" }}>
 									<TextField
+										value={date}
 										id="standard-textarea"
 										label="Date"
 										variant="standard"
+										onChange={(e)=>{setDate(e.target.value)}}
 									/>
 								</Grid>
 								<Grid item style={{ width: "100%" }}>
@@ -102,6 +110,8 @@ function NewEvent() {
 										id="standard-textarea"
 										label="Time"
 										variant="standard"
+										value={time}
+										onChange={(e)=>setTime(e.target.value)}
 									/>
 								</Grid>
 								<Grid item style={{ width: "100%" }}>
@@ -109,6 +119,8 @@ function NewEvent() {
 										id="standard-textarea"
 										label="Organizer"
 										variant="standard"
+										value={organizer}
+										onChange={(e)=>setOrganizer(e.target.value)}
 									/>
 								</Grid>
                                 <Grid item style={{ width: "100%" }}>
@@ -116,6 +128,17 @@ function NewEvent() {
 										id="standard-textarea"
 										label="Number of users to be registered"
 										variant="standard"
+										value={number}
+										onChange={(e)=>setNumber(e.target.value)}
+									/>
+								</Grid>
+								<Grid item style={{ width: "100%" }}>
+									<TextField
+										id="standard-textarea"
+										label="Locatiion"
+										variant="standard"
+										value={location}
+										onChange={(e)=>setLocation(e.target.value)}
 									/>
 								</Grid>
 							</Grid>
@@ -151,6 +174,7 @@ function NewEvent() {
 										fontWeight: "600",
 										fontSize: "1.1em",
 									}}
+									onClick={handleClick}
 								>
 									Submit
 								</Button>
