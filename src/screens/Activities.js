@@ -28,7 +28,6 @@ const [loading,setLoading]=useState(true);
         // console.log(data);
         setLoading(false);
     }
-
 }
 
   useEffect(() => {
@@ -52,10 +51,10 @@ const [loading,setLoading]=useState(true);
                 // title="WarmUp"
                 />
                 <CardTitle
-                // title="Warm Up"
+                title={item.name}
                 //   subtitle="Number 6"
                 />
-                <CardContent text={item.description} />
+                {/* <CardContent text={item.name} /> */}
                 <CardAction 
                 separator={true} 
                 inColumn={false}>
@@ -65,8 +64,8 @@ const [loading,setLoading]=useState(true);
                     color="#FEB557"
                 /> */}
                 <CardButton
-                    onPress={() => {navigation.navigate('Exercise')}}
-                    title="Explore"
+                    onPress={() => {navigation.navigate('ActivityInfo',{act:item})}}
+                    title="Exercise"
                     color="#FEB557"
                 />
                 </CardAction>

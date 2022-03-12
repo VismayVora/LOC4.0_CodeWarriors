@@ -10,22 +10,22 @@ function Events({navigation}){
         source={require('../utils/undraw_goal_0v5v.png')} 
         // title="WarmUp"
         />
-        <CardTitle
-        title="Join an event"
-        //   subtitle="Number 6"
-        />
+        {/* <CardTitle
+        title="See all events"
+          subtitle="Number 6"
+        /> */}
         {/* <CardContent text="Clifton, Western Cape" /> */}
         <CardAction 
         separator={true} 
         inColumn={false}>
-        <CardButton
+        {/* <CardButton
             onPress={() => {}}
             title="Do it"
             color="#FEB557"
-        />
+        /> */}
         <CardButton
-            onPress={() => {navigation.navigate('Exercise')}}
-            title="Explore"
+            onPress={() => {navigation.navigate('EventInfo')}}
+            title="See All Events"
             color="#FEB557"
         />
         </CardAction>
@@ -35,23 +35,23 @@ function Events({navigation}){
         source={require('../utils/undraw_goal_0v5v.png')} 
         // title="WarmUp"
         />
-        <CardTitle
+        {/* <CardTitle
         title="Create an event"
         onPress={()=>{navigation.navigate('Exercise')}}
-        //   subtitle="Number 6"
-        />
+          subtitle="Number 6"
+        /> */}
         {/* <CardContent text="Clifton, Western Cape" /> */}
         <CardAction 
         separator={true} 
         inColumn={false}>
-        <CardButton
+        {/* <CardButton
             onPress={() => {}}
             title="Do it"
             color="#FEB557"
-        />
+        /> */}
         <CardButton
             onPress={() => {navigation.navigate('Exercise')}}
-            title="Explore"
+            title="Create an Event"
             color="#FEB557"
         />
         </CardAction>
