@@ -1,0 +1,20 @@
+.loginImg {
+	background-size: cover;
+	background-position: center;
+	width: 20px;
+}
+
+.login_grid {
+	background-color: #ececed !important;
+}
+
+.main_btn {
+	border: 3px solid #1f2128 !important;
+	color: #1f2128 !important;
+}
+
+.main_btn:hover {
+	border: 3px solid #69fff1 !important;
+	background-color: #1f2128 !important;
+	color: #69fff1 !important;
+}
