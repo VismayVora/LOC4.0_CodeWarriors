@@ -57,9 +57,9 @@ export default function Activities() {
 										number of studies also have helped researchers learn how
 										meditation might work and how it affects the brain.
 									</div>
-									<Button sx={{cursor:"pointer"}}>
+									<button >
 										Start Activity
-									</Button>
+									</button>
 								</div>
 							</div>
 						</div>
