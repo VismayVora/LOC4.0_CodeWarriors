@@ -9,7 +9,7 @@ import './App.css';
 import Dashboard from './Pages/dashboard/dashboard';
 import Charts from './Pages/dashboard/chart';
 import SpacingGrid from './Pages/dashboard/layout';
-
+import OutlinedCard from "./Pages/Events/events";
 import Activities from "../src/Pages/Activities/Activities"
 
 
@@ -33,9 +33,7 @@ function App() {
 						<Route path='/charts' element={<Charts />} />
 						<Route path='/spacinggrid' element={<SpacingGrid />} />
 						<Route exact path="/activities" element={<Activities />} />
-						
-						<Route exact path="/activities" element={<Activities />} />
-					
+						<Route path='/simplecard' element={<OutlinedCard />} />
 					</Routes>
 				</div>
 			</Router>
