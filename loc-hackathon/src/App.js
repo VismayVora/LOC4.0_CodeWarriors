@@ -33,6 +33,9 @@ function App() {
 						<Route path='/charts' element={<Charts />} />
 						<Route path='/spacinggrid' element={<SpacingGrid />} />
 						<Route exact path="/activities" element={<Activities />} />
+						
+						<Route exact path="/activities" element={<Activities />} />
+					
 					</Routes>
 				</div>
 			</Router>
