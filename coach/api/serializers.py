@@ -10,7 +10,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 	
 	class Meta:
 		model = Player
-		fields = ['email','password','sport']
+		fields = ['email','password','weight','name']
 		
 	def validate(self,attrs):
 		email = attrs.get('email',' ')
@@ -29,5 +29,28 @@ class LoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = Player
         fields = ['email','password']
+
+class ActivitySerializer(serializers.ModelSerializer):
+	#weight = serializers.SerializerMethodField()
+
+	class Meta:
+		model = Activity
+		fields = '__all__'
+	
+	#def get_weight(self,obj):
+		#return self.request.user.weight
+
+class EventSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Event
+		fields = '__all__'
+
+class JoinedEventSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = JoinedEvents
+		fields='__all__'
+
 
 

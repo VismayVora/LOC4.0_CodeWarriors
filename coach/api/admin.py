@@ -5,19 +5,19 @@ from .models import *
 # Register your models here.
 class PlayerAdmin(UserAdmin):
     model = Player
-    list_display = ['email', 'sport','is_staff','is_active']
-    list_filter = ['email', 'sport','is_staff','is_active']
+    list_display = ['email', 'weight','name','is_staff','is_active']
+    list_filter = ['email', 'weight','name','is_staff','is_active']
 
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('sport',)}),
+        ('Personal info', {'fields': ('name','weight',)}),
         ('Permissions', {'fields': ('is_active','is_staff')}),
     )
 
     add_fieldsets = (
         (None, {
             'classes': ('wide,'),
-            'fields': ('email', 'password1', 'password2', 'sport','is_staff','is_active'),
+            'fields': ('email', 'password1', 'password2', 'weight','name','is_staff','is_active'),
         }),
     )
 
@@ -26,3 +26,6 @@ class PlayerAdmin(UserAdmin):
     filter_horizontal = ()
 
 admin.site.register(Player, PlayerAdmin)
+admin.site.register(Activity)
+admin.site.register(Event)
+admin.site.register(JoinedEvents)

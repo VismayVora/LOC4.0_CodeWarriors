@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-u=r*bmqh5m&ojxwgipcb3g%rag3d3o#u^8zw-4$q$_fli)s7ga
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io','127.0.0.1:8000','127.0.0.1','http://localhost:3000']
+CORS_ORIGIN_ALLOW_ALL=True
 
 
 # Application definition
@@ -126,7 +127,7 @@ REST_FRAMEWORK = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 

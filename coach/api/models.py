@@ -3,6 +3,8 @@ from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
 from rest_framework.authtoken.models import Token
 
+from django.conf import settings
+
 # Create your models here.
 class UserManager(BaseUserManager):
     """
@@ -35,10 +37,7 @@ class UserManager(BaseUserManager):
             raise ValueError('Superuser must have is_superuser=True.')
         return self.create_user(email, password, **extra_fields)
 
-class Player(AbstractUser):
-    username=None
-
-    SPORT_CHOICES = [
+SPORT_CHOICES = [
         ('CKT', 'Cricket'),
         ('FB', 'Football'),
         ('T', 'Tennis'),
@@ -47,19 +46,54 @@ class Player(AbstractUser):
         ('TT', 'Table Tennis')
     ]
 
+class Player(AbstractUser):
+    username=None
+
     # extra fields
     email = models.EmailField(("Email Address"),primary_key=True)
-    sport = models.CharField(max_length=3,choices=SPORT_CHOICES)
+    #sport = models.CharField(max_length=3,choices=SPORT_CHOICES)
+    name = models.CharField(max_length=30,null=True,blank=True)
+    weight = models.PositiveIntegerField(default=68)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS=[]
+    REQUIRED_FIELDS=['name','weight']
 
     objects = UserManager()
 
     def __str__(self):
-        return self.email
+        return self.name or ''
 
     @property
     def token(self):
         token = Token.objects.get(user=Player.objects.get(self.id))
         return token
+
+class Activity(models.Model):
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='Owner', on_delete=models.CASCADE)
+    sport = models.CharField(max_length=3,choices=SPORT_CHOICES)
+    image = models.ImageField(null=True,blank=True)
+    name = models.CharField(max_length = 30)
+    video_link = models.URLField()
+    description = models.TextField()
+    completion_status = models.BooleanField(default = False)
+
+class Event(models.Model):
+    date = models.DateField()
+    time = models.CharField(max_length=50)
+    name = models.CharField(max_length = 30)
+    location = models.TextField(max_length=100,null=True,blank=True)
+    image = models.ImageField(null=True,blank=True)
+    organiser = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='Organiser', on_delete=models.CASCADE,null=True,blank=True)
+    participant_limit = models.IntegerField(blank=True,null=True)
+    token = models.CharField(max_length=100,null=True)
+
+class JoinedEvents(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='JoinedOwner', on_delete=models.CASCADE,null=True,blank=True)
+    event = models.ForeignKey(Event,related_name='JoinedEvent', on_delete = models.CASCADE,null=True,blank=True)
+    members = models.PositiveIntegerField(default=1)
+    eventId=models.IntegerField()
+    tokenNo=models.CharField(max_length=255)
+
+#class Leaderboard
+    
+
