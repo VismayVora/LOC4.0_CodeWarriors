@@ -48,7 +48,10 @@ export default function Activities() {
 											</div>
 											<div className="theBack">
 												{item.description}
-												<Button sx={{ cursor: "pointer" }}>
+												<Button
+													sx={{ cursor: "pointer" }}
+													onClick={() => navigate("/selected_activity")}
+												>
 													Start Activity
 												</Button>
 											</div>
