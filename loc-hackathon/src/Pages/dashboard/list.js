@@ -37,7 +37,7 @@ export default function CheckList() {
 
   return (
     <List className={classes.root}>
-      {["push ups", "pull ups", "plank"].map((value) => {
+      {["Push Ups", "Pull Ups", "Plank","Mountain Climbers"," Jumping Jacks","Squats","Lunges","Cycling","Crunches"].map((value) => {
         const labelId = `checkbox-list-label-${value}`;
 
         return (

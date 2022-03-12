@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -25,22 +27,38 @@ const Input = styled('input')({
 
 
 export default function SelectedActivity() {
+	const [data,setData]=useState()
+	const itemid = sessionStorage.getItem('item_id');
+	console.log(itemid)
+	useEffect(() => {
+		fetch("http://9eae-106-209-235-77.ngrok.io/Activity/"+itemid, {
+			headers: {
+				Authorization: "Token 226eb2ed7afd3117ff943994158d9645eac05dbe",
+			},
+		})
+			.then((res) => res.json())
+			.then((json) => setData(json));
+	}, []);
 	return (
+		<div>
+			{data?
 		<Box sx={{ flexGrow: 1 }}>
 			<Grid container spacing={2}>
 				<Grid item xs={6} md={8}>
 					<Item>
-						<img className="selected_img" src={pilates} />
+						<img className="selected_img" src={data.image} />
 					</Item>
 				</Grid>
 				<Grid item xs={6} md={4}>
-					<Item>Description</Item>
+				<Item> <h1>Description</h1> </Item>
+					<Item>{data.description}</Item>
 					
 				</Grid>
 				<Grid item xs={6} md={12}>
 					<Item>
+					<h1>Exercise Name</h1>
 						<Checkbox {...label} defaultChecked />
-						Practiced Excercise?
+						{data.name}
 					</Item>
                     <Item>
                     <Stack direction="row" alignItems="center" spacing={2}>
@@ -69,6 +87,7 @@ export default function SelectedActivity() {
                     </Item>
 				</Grid>
 			</Grid>
-		</Box>
+		</Box>:<p>Loading....</p>}
+		</div>
 	);
 }

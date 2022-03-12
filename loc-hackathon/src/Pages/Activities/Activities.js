@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
+import SelectedActivity from "./SelectedActivity";
 
 export default function Activities() {
 	const [data, setData] = useState();
@@ -50,7 +51,8 @@ export default function Activities() {
 												{item.description}
 												<Button
 													sx={{ cursor: "pointer" }}
-													onClick={() => navigate("/selected_activity")}
+													onClick={() =>{ sessionStorage.setItem('item_id', JSON.stringify(item.id));
+														navigate("/selected_activity")}}
 												>
 													Start Activity
 												</Button>

@@ -10,15 +10,6 @@ import "./NewEvent.css";
 function NewEvent() {
 	const navigate = useNavigate();
 	const [list, setList] = useState({
-		lighting: "",
-		openness: "",
-		visibility: "",
-		people: "",
-		security: "",
-		walkpath: "",
-		public_transportation: "",
-		public_usage: "",
-		feeling: "",
 	});
 	const [items, setItems] = useState([]);
 	const [show, setShow] = useState(false);
@@ -27,6 +18,7 @@ function NewEvent() {
 		const value = e.target.value;
 		setValue(e.target.value);
 		setList({ ...list, [name]: value });
+		console.log(list)
 	};
 
 	const [value, setValue] = useState([null, null]);
@@ -151,6 +143,7 @@ function NewEvent() {
 										fontWeight: "600",
 										fontSize: "1.1em",
 									}}
+									onClick={handleChange}
 								>
 									Submit
 								</Button>
