@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import {View,Text,FlatList} from 'react-native';
 import {BASE_URL,token} from '../utils/api.js';
 import { WebView } from 'react-native-webview';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 function ActivityInfo({navigation,route}){
 const {act}=route.params;
@@ -20,6 +21,12 @@ const [loading,setLoading]=useState(true);
             <Text style={{fontSize:18,fontWeight:'bold',color:'#FA8546'}}>{act.name}</Text>
             <Text>{act.description}</Text>
         </View>
+        <TouchableOpacity
+                onPress={() => {
+                navigation.navigate('Timer');
+            }}>
+            <Text style={{alignSelf:'center',fontWeight:'bold',fontSize:20}}>Start the Timer!</Text>
+        </TouchableOpacity>
     </View>
     )
 }

@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
-import {View,Text,StyleSheet,FlatList,ActivityIndicator,Image} from "react-native";
-import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-cards';
+import {View,Text,StyleSheet,FlatList,ActivityIndicator,Image,TouchableOpacity} from "react-native";
+
 import {BASE_URL,token} from '../utils/api.js'
 function EventInfo(){
     const [events,setEvents]=useState([]);
@@ -24,6 +24,28 @@ function EventInfo(){
         }
     }
 
+    const joinEvent=async(id)=>{
+        try{
+            const result=await fetch(BASE_URL+'/join_event/',{
+                method:'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'token '+token},
+                body: JSON.stringify({
+                    "eventId":id,
+                    "tokenNo":token,
+                  }),
+            });
+            const json= await result.json();
+            console.log(json);
+            setEvents(json);
+        }catch(error){
+            console.log(error);
+            // Alert.alert(error);
+        }finally{
+            getEvents();
+        }
+    }
     useEffect(() => {
         // console.log(BASE_URL);
         getEvents();
@@ -40,11 +62,17 @@ function EventInfo(){
                   <Image source={require('../utils/undraw_game_day_ucx9.png')} style={{height:200,width:400,marginTop:5,}}/>
                   }
                   <Text style={{fontSize:18,fontWeight:'bold',color:'#FA8546'}}>{item.name}</Text>
-                  <View style={{flexDirection:'row',justifyContent:'space-between',marginHorizontal:5}}>
+                  <View style={{flexDirection:'row',justifyContent:'space-between',margin:5}}>
                     <Text>Date: {item.date}</Text>
                     <Text>Participant Limit: {item.participant_limit}</Text>
                   </View>
-                    <Text>Location: {item.location}</Text>
+                    <Text style={{marginLeft:5}}>Location: {item.location}</Text>
+                    <TouchableOpacity
+                        onPress={() => {
+                            joinEvent(item.id);
+                        }}>
+                        <Text style={{alignSelf:'center'}}>Join Event</Text>
+                    </TouchableOpacity>
               </View>
             }
             />}
