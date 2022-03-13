@@ -13,36 +13,23 @@ export default function LoginSide() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
-	var myHeaders = new Headers();
-	myHeaders.append(
-		"Authorization",
-		"Basic Z3JlaGFzaGFoNkBnbWFpbC5jb206Z3JlaGFzaGFo"
-	);
-	myHeaders.append(
-		"Cookie",
-		"csrftoken=fQ5GcS3afHVVVyREFENw1Ub54RZgwlMkIFicrHrxOrddyB7xgNi46AaN5B6A4090; sessionid=vkfter6wndyr2xly3808yhu1meqwl3gn"
-	);
+	
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		var formdata = new FormData();
 		formdata.append("email", email);
 		formdata.append("password", password);
-		fetch("https://findmyplug.herokuapp.com/login/", {
+		fetch("https://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/login/", {
+
 			method: "POST",
-			headers: myHeaders,
+			
 			body: formdata,
-			redirect: "follow",
+			
 		})
 			.then((response) => response.json())
 			.then((result) => {
-				if (result.token) {
-					console.log(result.token);
-					navigate("/activities");
-				} else {
-					navigate("/signup");
-					alert("Invalid cred");
-				}
+				console.log(result.token)
 				// result.token ? navigate("/booking"):
 				// alert("invalid"), navigate("/signup")
 				localStorage.setItem("token", result.token);

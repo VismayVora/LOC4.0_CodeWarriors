@@ -35,8 +35,6 @@ export default function SignInSide() {
 			var formdata = new FormData();
 			formdata.append("email", newPerson.email);
 			formdata.append("password", person.password);
-			formdata.append("phone", person.phone);
-			formdata.append("pincode", person.pincode);
 
 			var requestOptions = {
 				method: "POST",
@@ -44,7 +42,7 @@ export default function SignInSide() {
 				redirect: "follow",
 			};
 
-			fetch("https://findmyplug.herokuapp.com/register/", requestOptions)
+			fetch("https://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/register/", requestOptions)
 				.then((response) => response)
 				.then((result) => console.log(result))
 				.catch((error) => console.log("fgsla", error));

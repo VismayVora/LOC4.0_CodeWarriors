@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { useNavigate } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -13,7 +14,7 @@ import IconButton from "@mui/material/IconButton";
 import AddCircle from "@mui/icons-material/AddCircle";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
+import Modal from '@mui/material/Modal';
 import yoga from "../../assets/meditation.png";
 // import Popup from "reactjs-popup";
 import Popup from "reactjs-popup";
@@ -49,11 +50,37 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function OutlinedCard() {
+
+	const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+	
 	const [data, setData] = useState();
+	const [num,setNum] =useState();
 	const classes = useStyles();
 	const navigate = useNavigate();
 	const bull = <span className={classes.bullet}>•</span>;
 	const arr = [1];
+	const handleChange=()=>{
+		const formData=new FormData()
+		const token = localStorage.getItem('token');
+		const eventid = localStorage.getItem('event_id');
+		formData.append("members",num)
+		formData.append("tokenNo",token)
+		formData.append("eventId",eventid)
+		fetch("http://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/join_event/",{
+		headers: {
+			Authorization: "Token 226eb2ed7afd3117ff943994158d9645eac05dbe",
+		},
+            method:'POST',
+            body:formData,
+        }).then(res=>res.json().then(json=>console.log(json)))
+        .catch(err=>console.log(err))
+	}
 
 	useEffect(() => {
 		fetch(
@@ -101,23 +128,36 @@ export default function OutlinedCard() {
 											<h3>Date: {item.date}</h3>
 											<h3>Time: {item.time}</h3>
 											<h3>Location: {item.location}</h3>
-											<h3>Participant Limit: {item.participant_limit}</h3>
+											<h3>Availability: {item.participant_limit}</h3>
 											<h3>Organizer: {item.organiser}</h3>
-											<TextField
-												label="Number of members"
-												sx={{ width: "180px", marginLeft: "40px" }}
-											></TextField>
+											
 
-											<Button
-												style={{
-													marginLeft: "40%",
-													marginTop: "1%",
-													color: "blue",
-													borderColor: "blue",
-												}}
-											>
-												Join Event
-											</Button>
+											<div>
+												</div>
+      
+											<Button onClick= {() => {
+	navigate("/mem");
+	sessionStorage.setItem(
+		"item_id",
+		JSON.stringify(item.id)
+	);
+}}>Open modal</Button>
+      <Modal
+        hideBackdrop
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="child-modal-title"
+        aria-describedby="child-modal-description"
+      >
+        <Box sx={{ }}>
+          <h2 id="child-modal-title">Text in a child modal</h2>
+          <p id="child-modal-description">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          </p>
+          <Button onClick={handleClose}>Close Child Modal</Button>
+        </Box>
+      </Modal>
+    {/* </div> */}
 										</div>
 									</div>
 								</Item>
@@ -131,3 +171,5 @@ export default function OutlinedCard() {
 		</>
 	);
 }
+
+

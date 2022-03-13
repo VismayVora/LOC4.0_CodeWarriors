@@ -17,6 +17,9 @@ import Timer from "./Pages/Activities/Timer";
 import SelectedEvent from "./Pages/Events/SelectedEvent";
 import NavBar from "./Pages/NavBar/NavBar";
 import VideoFetching from "./Pages/VideoFetching/VideoFetching";
+import Members from "./Pages/Events/mem";
+import Timers from "./Pages/Activities/Timer";
+
 
 function App() {
 	const theme = createTheme({
@@ -44,6 +47,8 @@ function App() {
 						<Route path="/timer" element={<Timer />} />
 						<Route path="/navbar" element={<NavBar />} />
 						<Route path="/videofetching" element={<VideoFetching />} />
+						<Route path="/mem" element={<Members />} />
+						<Route path="/timer" element={<Timers />} />
 					</Routes>
 				</div>
 			</Router>
