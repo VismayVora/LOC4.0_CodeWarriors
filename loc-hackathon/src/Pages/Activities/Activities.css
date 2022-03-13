@@ -42,7 +42,7 @@
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    background-color: beige;
+background:"linear-gradient(rgba(20,10,10,0.5),transparent)";
     color: black;
   }
   
@@ -51,7 +51,7 @@
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    background-color: aquamarine;
+    background:linear-gradient(rgba(228, 136, 49, 0.5),transparent);
     color: black;
     transform: rotateY(180deg);
   }

@@ -31,14 +31,17 @@ export default function Activities() {
 			}
 		)
 			.then((res) => res.json())
-			.then((json) => setData(json));
+			.then((json) => {
+				console.log(json);
+				setData(json);
+			});
 	}, []);
 
 	const navigate = useNavigate();
 
 	return (
 		<>
-			<Grid container spacing={3}>
+			<Grid container spacing={3} sx={{background:"linear-gradient(rgba(20,0,0,0.5),transparent)"}}>
 				{data ? (
 					data.map((item) => {
 						return (

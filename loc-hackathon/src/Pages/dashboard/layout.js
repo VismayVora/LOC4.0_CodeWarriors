@@ -6,11 +6,11 @@ import Paper from '@material-ui/core/Paper';
 import CheckList from './list';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
+  // root: {
+  //   flexGrow: 1,
+  // },
   paper: {
-    height: 300,
+    // height: 300,
     width: 500,
   },
   control: {

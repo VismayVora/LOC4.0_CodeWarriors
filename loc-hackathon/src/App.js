@@ -15,6 +15,8 @@ import "./App.css";
 import SelectedActivity from "./Pages/Activities/SelectedActivity";
 import Timer from "./Pages/Activities/Timer";
 import SelectedEvent from "./Pages/Events/SelectedEvent";
+import NavBar from "./Pages/NavBar/NavBar";
+import VideoFetching from "./Pages/VideoFetching/VideoFetching";
 
 function App() {
 	const theme = createTheme({
@@ -40,6 +42,8 @@ function App() {
 						<Route path="/event" element={<OutlinedCard />} />
 						<Route path="/selectedevent" element={<SelectedEvent />} />
 						<Route path="/timer" element={<Timer />} />
+						<Route path="/navbar" element={<NavBar />} />
+						<Route path="/videofetching" element={<VideoFetching />} />
 					</Routes>
 				</div>
 			</Router>
