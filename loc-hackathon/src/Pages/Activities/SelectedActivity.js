@@ -12,7 +12,7 @@ import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Stack from "@mui/material/Stack";
 import { Button } from "@mui/material";
-import Timer from "./Timer";
+import Timers from "./Timer";
 
 const Item = styled(Paper)(({ theme }) => ({
 	backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -53,7 +53,7 @@ export default function SelectedActivity() {
 				<Grid item xs={6} md={4}>
 				<Item> <h1>Description</h1> </Item>
 					<Item>{data.description}</Item>
-					
+					<Item><Timers /></Item>
 				</Grid>
 				<Grid item xs={6} md={12}>
 					<Item>
