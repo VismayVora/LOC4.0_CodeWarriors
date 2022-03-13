@@ -11,14 +11,17 @@
 	justify-content: left !important;
 	text-align: start;
 }
-h3 {
+h5 {
 	margin-left: 15% !important;
-    /* margin-top: 5px !important;  */
 }
 .add_button{
-    margin-left: 2rem;
+    margin-left: 8rem !important;
+    margin-top: 15px !important; 
 }
 
+.info{
+    margin-top: 15px !important; 
+}
 .front_img {
 	position: relative;
 	/* width: 50% !important; */

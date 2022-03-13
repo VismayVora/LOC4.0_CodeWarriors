@@ -1,10 +1,10 @@
 import React from "react";
 import ReactPlayer from "react-player";
 
-function VideoFetching() {
+function VideoFetching({url}) {
 	return (
 		<div className="videoFetching">
-			<ReactPlayer url="https://www.youtube.com/watch?v=UVCP4bKy9Iw" />
+			<ReactPlayer url={url} />
 		</div>
 	);
 }

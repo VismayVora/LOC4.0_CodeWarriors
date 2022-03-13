@@ -11,6 +11,7 @@ import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import SelectedActivity from "./SelectedActivity";
+import NavBar from "../NavBar/NavBar";
 
 export default function Activities() {
 	const [data, setData] = useState();
@@ -23,7 +24,7 @@ export default function Activities() {
 	}));
 	useEffect(() => {
 		fetch(
-			"http://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/Activity",
+			"https://6de4-2402-3a80-655-7e4a-7175-4a44-6a34-a0ca.ngrok.io/Activity",
 			{
 				headers: {
 					Authorization: "Token 226eb2ed7afd3117ff943994158d9645eac05dbe",
@@ -40,8 +41,20 @@ export default function Activities() {
 	const navigate = useNavigate();
 
 	return (
-		<>
-			<Grid container spacing={3} sx={{background:"linear-gradient(rgba(20,0,0,0.5),transparent)"}}>
+		<> <div
+        className="dashboard"
+        style={{ backgroundColor: "linear-gradient(rgba(20, 0, 10, 0.5), transparent)" , justifyContent:"left", textAlign:"left"}}
+      >
+        <NavBar sx={{backgroundColor: "linear-gradient(rgba(20, 0, 10, 0.5), transparent)"}} />
+        <Grid>
+            <h1> Training</h1>
+        </Grid>
+        </div>
+			<Grid
+				container
+				spacing={3}
+				sx={{ background: "linear-gradient(rgba(20,0,0,0.5),transparent)" }}
+			>
 				{data ? (
 					data.map((item) => {
 						return (

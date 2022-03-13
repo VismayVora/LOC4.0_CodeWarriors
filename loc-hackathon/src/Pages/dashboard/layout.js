@@ -27,7 +27,7 @@ export default function SpacingGrid() {
   };
 
   return (
-      <div>
+      <div style={{ background: "grey" }}>
 
     <Grid container className={classes.root} spacing={2}>
         

@@ -28,7 +28,7 @@ export default function SelectedEvent() {
 			<Grid container spacing={2}>
 				<Grid item xs={8} md={10}>
 					<Item>
-						<img className="selected_img" src={pilates} />
+					
 					</Item>
 				</Grid>
 				<Grid item xs={6} md={4}>
