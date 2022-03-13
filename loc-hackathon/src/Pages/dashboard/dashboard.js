@@ -6,19 +6,19 @@ import Charts from "./chart";
 import CheckList from "./list";
 import Box from '@material-ui/core/Box';
 
+import NavBar from "../NavBar/NavBar";
 
 
 function Dashboard(){
     return(
         <div>
-            <Box bgcolor="text.disabled" color="background.paper" p={2}>
-                <Grid>
-                    <h1> Dashboard</h1>
-                </Grid>
-                <Grid>
-                    <SpacingGrid />
-                </Grid>
-            </Box>
+            <NavBar/>
+            <Grid>
+                <h1> Dashboard</h1>
+            </Grid>
+            <Grid>
+                <SpacingGrid />
+            </Grid>
         </div>
     )
 }

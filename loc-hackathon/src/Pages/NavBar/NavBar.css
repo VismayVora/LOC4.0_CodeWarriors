@@ -1,0 +1,10 @@
+li {
+	float: right;
+	list-style-type: none;
+	text-decoration: none;
+	margin: 2rem;
+}
+
+.nav-bar {
+	background-color: rgb(203, 212, 173) !important;
+}

@@ -12,6 +12,8 @@ import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Stack from "@mui/material/Stack";
 import { Button } from "@mui/material";
+// import Timer from "./Timer";
+import VideoFetching from "../VideoFetching/VideoFetching";
 import Timers from "./Timer";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -47,7 +49,8 @@ export default function SelectedActivity() {
 			<Grid container spacing={2}>
 				<Grid item xs={6} md={8}>
 					<Item>
-						<img className="selected_img" src={data.image} />
+						{/* <img className="selected_img" src={data.image} /> */}
+                        {/* <VideoFetching url={data.video_link} /> */}
 					</Item>
 				</Grid>
 				<Grid item xs={6} md={4}>

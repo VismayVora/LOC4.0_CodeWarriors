@@ -3,9 +3,21 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router";
 import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import "./NewEvent.css";
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import Stack from '@mui/material/Stack';
+import { styled } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
+
+const Item = styled(Paper)(({ theme }) => ({
+	backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+	...theme.typography.body2,
+	padding: theme.spacing(1),
+	textAlign: "center",
+	color: theme.palette.text.secondary,
+}));
 
 function NewEvent() {
 	const navigate = useNavigate()
@@ -15,6 +27,11 @@ function NewEvent() {
 	const [organizer,setOrganizer]=useState()
 	const [number,setNumber]=useState()
 	const [location,setLocation]=useState()
+
+    const Input = styled('input')({
+        display: 'none',
+      });
+    
 	const [err,setErr]=useState()
 	
 
@@ -137,12 +154,39 @@ function NewEvent() {
 								<Grid item style={{ width: "100%" }}>
 									<TextField
 										id="standard-textarea"
-										label="Locatiion"
+										label="Location"
 										variant="standard"
 										value={location}
 										onChange={(e)=>setLocation(e.target.value)}
 									/>
 								</Grid>
+                                {/* <Grid>
+                                <Item>
+                    <Stack direction="row" alignItems="center" spacing={2}>
+									<label htmlFor="contained-button-file">
+										<Input
+											accept="image/*"
+											id="contained-button-file"
+											multiple
+											type="file"
+										/>
+										<Button variant="contained" component="span">
+											Upload
+										</Button>
+									</label>
+									<label htmlFor="icon-button-file">
+										<Input accept="image/*" id="icon-button-file" type="file" />
+										<IconButton
+											color="primary"
+											aria-label="upload picture"
+											component="span"
+										>
+											<PhotoCamera />
+										</IconButton>
+									</label>
+								</Stack>
+                    </Item>
+                                </Grid> */}
 							</Grid>
 
 							<div

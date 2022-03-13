@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
+import login1 from '../../assets/login.png'
 
 export default function LoginSide() {
 	const [email, setEmail] = useState("");
@@ -53,7 +54,7 @@ export default function LoginSide() {
 				item
 				xs={12}
 				sm={8}
-				md={8}
+				md={7}
 				component={Paper}
 				elevation={6}
 				square
@@ -158,7 +159,7 @@ export default function LoginSide() {
 				item
 				xs={false}
 				sm={4}
-				md={4}
+				md={5}
 				// sx={{
 				// 	backgroundImage: login,
 				// 	backgroundSize: "cover",
@@ -166,11 +167,11 @@ export default function LoginSide() {
 				// 	backgroundColor: "#1F2128",
 				// }}
 			>
-				{/* <img
-					src={cover}
+				<img
+					src={login1}
 					style={{ width: "100%", height: "100vh" }}
 					alt="login-img"
-				/> */}
+				/>
 				
 				
 			</Grid>

@@ -97,7 +97,7 @@ export default function OutlinedCard() {
 			}
 		)
 			.then((res) => res.json())
-			.then((json) => setData(json));
+			.then((json) => console.log(json));
 	}, []);
 
 	return (

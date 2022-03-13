@@ -1,0 +1,15 @@
+.d-block w-100{
+    background-size: "cover";
+    background-position: "center";
+    background-color: #1F2128;
+    opacity:2 ;
+}
+.d-block w-100 mystyle2{
+    background-size: "cover";
+    background-position: "center";
+    background-color: #1F2128;
+    opacity:2 ;
+}
+.text{
+    margin-bottom: 120px !important;
+}

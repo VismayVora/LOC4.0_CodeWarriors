@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
+import img from "../../assets/img.png";
 
 export default function SignInSide() {
 	const [person, setPerson] = useState({
@@ -67,15 +68,15 @@ export default function SignInSide() {
 				backgroundColor="#ececed"
 			>
 				{/* <img
-					src={logo}
+					src={img}
 					alt="cover-img"
 					style={{
 						marginTop: "25px",
 						display: "flex",
 						justifyContent: "flex-start",
 						marginLeft: "25px",
-					}} */}
-				/>
+					}}
+				/> */}
 				<Box
 					sx={{
 						display: "flex",
@@ -278,59 +279,12 @@ export default function SignInSide() {
 					backgroundColor: "#1F2128",
 				}}
 			>
-				{/* <img
-					src={cover}
+				<img
+					src={img}
 					alt="cover-img"
 					style={{ width: "100%", height: "100vh" }}
-				/> */}
-				<Button
-					className="login_button"
-					type="button"
-					variant="contained"
-					onClick={() => {
-						navigate("/login");
-					}}
-					sx={{
-						mt: -145,
-						mb: 2,
-						mr: 58,
-						padding: "10px",
-						width: "110px",
-						backgroundColor: "#1F2128",
-						paddingRight: "25px",
-						paddingTop: "10px",
-						paddingBottom: "10px",
-						color: "#ECECED",
-						fontWeight: "bold",
-						borderRadius: "0px 25px 25px 0px !important",
-					}}
-				>
-					Login
-				</Button>
-				<Button
-					className="login_button"
-					type="button"
-					variant="contained"
-					onClick={() => {
-						navigate("/signup");
-					}}
-					sx={{
-						mt: -135,
-						mb: 2,
-						mr: 58,
-						padding: "10px",
-						width: "110px",
-						backgroundColor: "#ECECED",
-						paddingRight: "25px",
-						paddingTop: "10px",
-						paddingBottom: "10px",
-						color: "#1F2128",
-						fontWeight: "bold",
-						borderRadius: "0px 25px 25px 0px !important",
-					}}
-				>
-					Sign Up
-				</Button>
+				/>
+
 				<Typography
 					component="h6"
 					variant="h2"
@@ -343,9 +297,7 @@ export default function SignInSide() {
 						ml: 15,
 						opacity: 1,
 					}}
-				>
-					Hey there!
-				</Typography>
+				></Typography>
 			</Grid>
 		</Grid>
 	);
