@@ -21,6 +21,7 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import "./events.css";
 import { TextField } from "@mui/material";
+import { integerPropType } from "@mui/utils";
 
 const useStyles = makeStyles({
 	root: {
@@ -65,14 +66,18 @@ export default function OutlinedCard() {
 	const navigate = useNavigate();
 	const bull = <span className={classes.bullet}>•</span>;
 	const arr = [1];
+	
 	const handleChange=()=>{
 		const formData=new FormData()
+		
 		const token = localStorage.getItem('token');
-		const eventid = localStorage.getItem('event_id');
-		formData.append("members",num)
+		const eventIId = sessionStorage.getItem('event_id');
+		
+		
+		formData.append("members",1)
 		formData.append("tokenNo",token)
-		formData.append("eventId",eventid)
-		fetch("http://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/join_event/",{
+		formData.append("eventId",eventIId)
+		fetch("https://6de4-2402-3a80-655-7e4a-7175-4a44-6a34-a0ca.ngrok.io/join_event/",{
 		headers: {
 			Authorization: "Token 226eb2ed7afd3117ff943994158d9645eac05dbe",
 		},
@@ -84,7 +89,7 @@ export default function OutlinedCard() {
 
 	useEffect(() => {
 		fetch(
-			"http://dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io/Event/",
+			"https://6de4-2402-3a80-655-7e4a-7175-4a44-6a34-a0ca.ngrok.io/Event/",
 			{
 				headers: {
 					Authorization: "Token 226eb2ed7afd3117ff943994158d9645eac05dbe",
@@ -135,13 +140,15 @@ export default function OutlinedCard() {
 											<div>
 												</div>
       
-											<Button onClick= {() => {
-	navigate("/mem");
+											<Button 
+											id={item.id}
+											onClick= {() => {
+	handleChange()
 	sessionStorage.setItem(
-		"item_id",
+		"event_id",
 		JSON.stringify(item.id)
 	);
-}}>Open modal</Button>
+}}>Join</Button>
       <Modal
         hideBackdrop
         open={open}

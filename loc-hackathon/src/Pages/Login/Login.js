@@ -11,9 +11,10 @@ import { useNavigate } from "react-router-dom";
 export default function LoginSide() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [auth,setAuth]=useState()
 
 	
-
+	const navigate = useNavigate();
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		var formdata = new FormData();
@@ -28,7 +29,7 @@ export default function LoginSide() {
 		})
 			.then((response) => response.json())
 			.then((result) => {
-				console.log(result.token)
+				result.token? navigate("/dashboard"):navigate("/signup")
 				// result.token ? navigate("/booking"):
 				// alert("invalid"), navigate("/signup")
 				localStorage.setItem("token", result.token);
@@ -40,7 +41,7 @@ export default function LoginSide() {
 		// eslint-disable-next-line no-console
 	};
 
-	const navigate = useNavigate();
+	
 
 	return (
 		<Grid
@@ -144,6 +145,7 @@ export default function LoginSide() {
 								type="submit"
 								fullWidth
 								variant="outlined"
+								onClick={handleSubmit}
 							>
 								Sign In
 							</Button>
