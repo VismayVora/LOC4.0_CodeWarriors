@@ -4,6 +4,8 @@ import SpacingGrid from "./layout";
 
 import Charts from "./chart";
 import CheckList from "./list";
+import Box from '@material-ui/core/Box';
+
 import NavBar from "../NavBar/NavBar";
 
 function Dashboard() {

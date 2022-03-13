@@ -6,6 +6,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 
 import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
+import { Button } from "@material-ui/core";
 
 
 
@@ -25,6 +26,7 @@ export default function CheckList() {
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
+    console.log(newChecked)
 
     if (currentIndex === -1) {
       newChecked.push(value);
@@ -36,8 +38,10 @@ export default function CheckList() {
   };
 
   return (
+
     <List className={classes.root}>
-      {["Push Ups", "Pull Ups", "Plank","Mountain Climbers"," Jumping Jacks","Squats","Lunges","Cycling","Crunches"].map((value) => {
+      <h2>Daily Exercises</h2>
+      {["Push Ups ", "Pull Ups ", "Plank ","Mountain Climbers"," Jumping Jacks","Squats","Lunges","Crunches"].map((value) => {
         const labelId = `checkbox-list-label-${value}`;
 
         return (
@@ -61,6 +65,10 @@ export default function CheckList() {
           </ListItem>
         );
       })}
+      <Button
+        onClick={()=>{console.log(checked)}}>
+        Submit
+      </Button>
     </List>
   );
 }

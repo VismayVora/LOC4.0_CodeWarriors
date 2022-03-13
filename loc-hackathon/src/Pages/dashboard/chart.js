@@ -20,6 +20,7 @@ const data = [
 ];
 return (
 	<Paper>
+		<h2>Daily Analysis</h2>
 	<Chart
 	data={data}
 	>

@@ -21,7 +21,11 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import "./events.css";
 import { TextField } from "@mui/material";
+<<<<<<< HEAD
 import NavBar from "../NavBar/NavBar";
+=======
+import { integerPropType } from "@mui/utils";
+>>>>>>> 73dfd167e365ccc1454f84ccddf15e8a5a729dda
 
 const useStyles = makeStyles({
 	root: {
@@ -65,6 +69,7 @@ export default function OutlinedCard() {
 	const navigate = useNavigate();
 	const bull = <span className={classes.bullet}>•</span>;
 	const arr = [1];
+<<<<<<< HEAD
 	const handleChange = () => {
 		const formData = new FormData();
 		const token = localStorage.getItem("token");
@@ -85,6 +90,28 @@ export default function OutlinedCard() {
 			.then((res) => res.json().then((json) => console.log(json)))
 			.catch((err) => console.log(err));
 	};
+=======
+	
+	const handleChange=()=>{
+		const formData=new FormData()
+		
+		const token = localStorage.getItem('token');
+		const eventIId = sessionStorage.getItem('event_id');
+		
+		
+		formData.append("members",1)
+		formData.append("tokenNo",token)
+		formData.append("eventId",eventIId)
+		fetch("https://6de4-2402-3a80-655-7e4a-7175-4a44-6a34-a0ca.ngrok.io/join_event/",{
+		headers: {
+			Authorization: "Token 226eb2ed7afd3117ff943994158d9645eac05dbe",
+		},
+            method:'POST',
+            body:formData,
+        }).then(res=>res.json().then(json=>console.log(json)))
+        .catch(err=>console.log(err))
+	}
+>>>>>>> 73dfd167e365ccc1454f84ccddf15e8a5a729dda
 
 	useEffect(() => {
 		fetch(
@@ -149,6 +176,7 @@ export default function OutlinedCard() {
 													<h5>Availability: {item.participant_limit}</h5>
 													<h5>Organizer: {item.organiser}</h5>
 												</div>
+<<<<<<< HEAD
 
 												<Button
 													className="add_button"
@@ -165,6 +193,34 @@ export default function OutlinedCard() {
 
 												{/* </div> */}
 											</div>
+=======
+      
+											<Button 
+											id={item.id}
+											onClick= {() => {
+	handleChange()
+	sessionStorage.setItem(
+		"event_id",
+		JSON.stringify(item.id)
+	);
+}}>Join</Button>
+      <Modal
+        hideBackdrop
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="child-modal-title"
+        aria-describedby="child-modal-description"
+      >
+        <Box sx={{ }}>
+          <h2 id="child-modal-title">Text in a child modal</h2>
+          <p id="child-modal-description">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          </p>
+          <Button onClick={handleClose}>Close Child Modal</Button>
+        </Box>
+      </Modal>
+    {/* </div> */}
+>>>>>>> 73dfd167e365ccc1454f84ccddf15e8a5a729dda
 										</div>
 									</Item>
 								</Grid>
