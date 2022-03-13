@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate,login
 from rest_framework.authtoken.models import Token
 from rest_framework import status,permissions,viewsets
 
+from .cron import my_cron_job
+
 from .models import *
 from .serializers import *
 
@@ -12,6 +14,8 @@ from rest_framework.decorators import action,api_view
 
 from django.http import JsonResponse
 from rest_framework.permissions import AllowAny
+
+import datetime
 
 # import environ
 
@@ -116,6 +120,57 @@ class JoinEventAPI(GenericAPIView):
 			curr_event.save()
 			return Response({'event' : "Event Saved!"},status = status.HTTP_200_OK)
 		return Response('Invalid Credentials',status = status.HTTP_404_NOT_FOUND)
+
+class WeeklyDataAPI(GenericAPIView):
+
+	serializer_class = WeeklyDataSerializer
+
+	def post(self,request,*args,**kwargs):
+		serializer = self.serializer_class(data=request.data)
+
+		my_date = datetime.date.today()
+		year, week_num, day_of_week = my_date.isocalendar()
+			
+		while (my_cron_job(week_num) <= 6):
+			if serializer.is_valid(raise_exception=True):
+				if serializer.data['1'] == True:
+					serializer.data['arms'] = serializer.data['arms'] + 5
+				
+				if serializer.data['2'] == True:
+					serializer.data['arms'] = serializer.data['arms'] + 10
+
+				if serializer.data['3'] == True:
+					serializer.data['cores'] = serializer.data['cores'] + 5
+				
+				if serializer.data['4'] == True:
+					serializer.data['cores'] = serializer.data['cores'] + 10
+				
+				if serializer.data['5'] == True:
+					serializer.data['intensive_workout'] = serializer.data['intensive_workout'] + 10
+				
+				if serializer.data['6'] == True:
+					serializer.data['intensive_workout'] = serializer.data['intensive_workout'] + 10
+				
+				if serializer.data['7'] == True:
+					serializer.data['legs'] = serializer.data['legs'] + 5
+				
+				if serializer.data['8'] == True:
+					serializer.data['legs'] = serializer.data['legs'] + 10
+				
+				serializer.save()
+			# Restart loop logic
+			i = i + 1
+			if my_cron_job(week_num) == 0:
+				i = 0
+
+			
+			
+
+
+		
+
+
+
 
 
 

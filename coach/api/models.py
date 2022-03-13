@@ -91,9 +91,24 @@ class JoinedEvents(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='JoinedOwner', on_delete=models.CASCADE,null=True,blank=True)
     event = models.ForeignKey(Event,related_name='JoinedEvent', on_delete = models.CASCADE,null=True,blank=True)
     members = models.PositiveIntegerField(default=1)
-    eventId=models.IntegerField()
+    eventId=models.CharField(max_length=50)
     tokenNo=models.CharField(max_length=255)
 
 #class Leaderboard
+class WeeklyData(models.Model):
+    arms = models.IntegerField()
+    cores = models.IntegerField()
+    legs = models.IntegerField()
+    intensive_workout = models.IntegerField()
+    push_ups = models.BooleanField(default=False,null=True,blank=True)
+    pull_ups = models.BooleanField(default=False,null=True,blank=True)
+    plank = models.BooleanField(default=False,null=True,blank=True)
+    crunches = models.BooleanField(default=False,null=True,blank=True)
+    mountain_climbers = models.BooleanField(default=False,null=True,blank=True)
+    jumping_jack = models.BooleanField(default=False,null=True,blank=True)
+    squats = models.BooleanField(default=False,null=True,blank=True)
+    lunges = models.BooleanField(default=False,null=True,blank=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+
     
 

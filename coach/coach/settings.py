@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-u=r*bmqh5m&ojxwgipcb3g%rag3d3o#u^8zw-4$q$_fli)s7ga
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dc5a-2401-4900-198b-aafb-f1ed-32ad-6425-c523.ngrok.io','127.0.0.1:8000','127.0.0.1','http://localhost:3000']
+ALLOWED_HOSTS = ['6de4-2402-3a80-655-7e4a-7175-4a44-6a34-a0ca.ngrok.io','127.0.0.1:8000','127.0.0.1','http://localhost:3000']
 CORS_ORIGIN_ALLOW_ALL=True
 
 
@@ -43,9 +43,14 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'drf_yasg',
     'corsheaders',
+    'django_crontab',
 
     #Installed Apps
     'api',
+]
+
+CRONJOBS = [
+    ('0 0 * * 0', 'myapp.cron.my_cron_job')
 ]
 
 MIDDLEWARE = [
