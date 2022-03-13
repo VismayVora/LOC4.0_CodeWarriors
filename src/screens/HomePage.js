@@ -14,7 +14,7 @@ export default function HomePage() {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Dashboard" component={Dashboard} options={{headerShown:true,tabBarIcon: () => (<MaterialCommunityIcons name="monitor-dashboard" color="red" size={25}/>)}} />
-      <Tab.Screen name="Activities" component={Activities} options={{headerShown:true,tabBarIcon: () => (<MaterialCommunityIcons name="yoga" color="red" size={25}/>)}}/>
+      <Tab.Screen name="Training" component={Activities} options={{headerShown:true,tabBarIcon: () => (<MaterialCommunityIcons name="yoga" color="red" size={25}/>)}}/>
       <Tab.Screen name="Events" component={Events} options={{headerShown:true,tabBarIcon: ()=>(<MaterialIcons name="event" color="red" size={25}/>)}}/>
     </Tab.Navigator>
   );

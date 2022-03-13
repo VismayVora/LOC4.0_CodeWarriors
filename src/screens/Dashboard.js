@@ -1,16 +1,19 @@
 import React from "react";
-import {View,Text,StyleSheet,ScrollView,Dimensions} from "react-native";
+import {View,Text,StyleSheet,ScrollView,Dimensions,Image} from "react-native";
 import {BarChart} from "react-native-chart-kit";
 import ProgressCircle from 'react-native-progress-circle';
 
 function Dashboard({navigation}){
-    return(
-        <ScrollView>
-            <Text>Last 7 Day's Report</Text>
+    return(<>
+        <View style={{alignSelf:'center'}}>
+            <Image source={require('../utils/undraw_Dashboard_re_3b76.png')} style={{height:140,width:340}}/>
+        </View>
+        <ScrollView style={{marginTop:15}}>
+            <Text style={styles.text}>Last 7 Day's Report</Text>
             <View style={{flexDirection:'row'}}>
             <ProgressCircle
                 percent={300/7}
-                radius={58}
+                radius={57}
                 borderWidth={8}
                 color="#3399FF"
                 shadowColor="#999"
@@ -21,7 +24,7 @@ function Dashboard({navigation}){
             <Text>{'\t'}</Text>
             <ProgressCircle
                 percent={600/7}
-                radius={58}
+                radius={57}
                 borderWidth={8}
                 color="#3399FF"
                 shadowColor="#999"
@@ -32,7 +35,7 @@ function Dashboard({navigation}){
             <Text>{'\t'}</Text>
             <ProgressCircle
                 percent={500/7}
-                radius={58}
+                radius={57}
                 borderWidth={8}
                 color="#3399FF"
                 shadowColor="#999"
@@ -44,20 +47,12 @@ function Dashboard({navigation}){
         <View style={styles.container}>
             <View>
             {/*It is an Example of Bar Chart*/}
-            <Text
-            style={{
-            textAlign: 'center',
-            fontSize: 18,
-            padding: 16,
-            marginTop: 16,
-            }}>
-            Past Activity
-            </Text>
+            <Text style={styles.text}>Points Summary</Text>
             <BarChart data={{
             labels: [ 'Monday','Tuesday','Wednesday','Thursday','Friday'],
             datasets: [
             {
-            data: [20, 45, 28, 80, 99],
+            data: [20, 40, 30, 10, 50],
             },
             ],
             }}
@@ -81,6 +76,7 @@ function Dashboard({navigation}){
             </View>
             </View>
         </ScrollView>
+        </>
     )
 }
 
@@ -92,6 +88,11 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     backgroundColor: '#ecf0f1',
     },
+    text:{
+        fontSize:20,
+        fontWeight:'bold',
+        alignSelf:'center',
+    }
 });
 
 export default Dashboard;

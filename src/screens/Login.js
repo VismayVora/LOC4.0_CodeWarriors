@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Text, Button, TouchableOpacity,TextInput} from 'react-native';
+import {View, StyleSheet, Text, Button, TouchableOpacity,TextInput,Image} from 'react-native';
 import PasswordInput from '../components/PassInput';
 import { AuthContainer,useAuth } from '../Auth';
 import Textinp from '../components/Textinp';
@@ -12,7 +12,8 @@ function Login({navigation}) {
   const onLogin = (email, password) => auth.signIn(email, password);
   return (
     <View style={styles.container}>
-      <Text style={styles.textStyle}>Login</Text>
+      <Text style={styles.text}>My Fitness Pal</Text>
+      <Image source={require('../utils/undraw_working_out_6psf.png')} style={{height:110,width:210}}/>
       <Textinp
         marginTop={50}
         iconShape="mail"
@@ -35,7 +36,7 @@ function Login({navigation}) {
       <TouchableOpacity
         onPress={() => {
           onLogin(email, password);
-        }}><Text>Login</Text>
+        }}><Text style={styles.textStyle}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
             <Text style={{fontSize:15,margin:30}}>Don't have an account? Signup</Text>
@@ -55,6 +56,12 @@ const styles = StyleSheet.create({
     marginTop: 25,
     fontSize:20,
   },
+  text:{
+    fontSize:24,
+    fontWeight:'bold',
+    alignSelf:'center',
+    marginBottom:10,
+}
 });
 
 export default Login;

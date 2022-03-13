@@ -8,6 +8,7 @@ import EventInfo from './screens/EventInfo';
 import ActivityInfo from './screens/ActivityInfo';
 // import timer from './screens/timer';
 import Timer from './screens/timer';
+import CreateEvent from './screens/CreateEvent';
 
 const Stack = createStackNavigator();
 
@@ -20,7 +21,9 @@ const Appstack = () => {
             <Stack.Screen name='Exercise' component={Exercise} options={{ headerShown: false }}></Stack.Screen>
             <Stack.Screen name='EventInfo' component={EventInfo} options={{ headerShown: false }}></Stack.Screen>
             <Stack.Screen name='ActivityInfo' component={ActivityInfo} options={{ headerShown: false }}></Stack.Screen>
+            
             <Stack.Screen name='Timer' component={Timer} options={{ headerShown: false }}></Stack.Screen>
+            <Stack.Screen name='CreateEvent' component={CreateEvent} options={{ headerShown: false }}></Stack.Screen>
         </Stack.Navigator>
     </NavigationContainer>
   );

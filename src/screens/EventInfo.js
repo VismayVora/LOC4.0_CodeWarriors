@@ -1,5 +1,7 @@
 import React,{useState,useEffect} from "react";
 import {View,Text,StyleSheet,FlatList,ActivityIndicator,Image,TouchableOpacity} from "react-native";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 
 import {BASE_URL,token} from '../utils/api.js'
 function EventInfo(){
@@ -67,12 +69,16 @@ function EventInfo(){
                     <Text>Participant Limit: {item.participant_limit}</Text>
                   </View>
                     <Text style={{marginLeft:5}}>Location: {item.location}</Text>
+                    <View style={{
+                        backgroundColor:'#cdc0b0',width:wp('50%'),alignSelf:'center',
+                        marginTop:10,borderRadius:6,borderColor:"#cdc0b0"}}>
                     <TouchableOpacity
                         onPress={() => {
                             joinEvent(item.id);
                         }}>
-                        <Text style={{alignSelf:'center'}}>Join Event</Text>
+                        <Text style={{alignSelf:'center',fontWeight:'bold',fontSize:18}}>Join Event</Text>
                     </TouchableOpacity>
+                    </View>
               </View>
             }
             />}

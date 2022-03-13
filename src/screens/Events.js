@@ -4,7 +4,7 @@ import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 
 
 function Events({navigation}){
     return(
-    <ScrollView>
+    <ScrollView style={{marginTop:20}}>
         <Card>
         <CardImage 
         source={require('../utils/undraw_goal_0v5v.png')} 
@@ -32,7 +32,7 @@ function Events({navigation}){
     </Card>
     <Card>
         <CardImage 
-        source={require('../utils/undraw_goal_0v5v.png')} 
+        source={require('../utils/undraw_bike_ride_7xit.png')} 
         // title="WarmUp"
         />
         {/* <CardTitle
@@ -50,7 +50,7 @@ function Events({navigation}){
             color="#FEB557"
         /> */}
         <CardButton
-            onPress={() => {navigation.navigate('Exercise')}}
+            onPress={() => {navigation.navigate('CreateEvent')}}
             title="Create an Event"
             color="#FEB557"
         />
