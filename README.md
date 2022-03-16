@@ -3,5 +3,5 @@ An application which can provide small exercises (for eg, cricket strokes, yoga 
 
 # We have Branches :
 App Code:https://github.com/VismayVora/LOC4.0_CodeWarriors/tree/app
-Web Code:
-Backend Code:
+Web Code:https://github.com/VismayVora/LOC4.0_CodeWarriors/tree/frontend
+Backend Code:https://github.com/VismayVora/LOC4.0_CodeWarriors/tree/backend
